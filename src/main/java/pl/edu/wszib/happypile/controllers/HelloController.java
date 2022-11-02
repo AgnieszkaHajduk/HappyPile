@@ -1,4 +1,4 @@
-package pl.edu.wszib.happypile.controller;
+package pl.edu.wszib.happypile.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
