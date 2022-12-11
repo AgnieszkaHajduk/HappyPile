@@ -11,5 +11,4 @@ public class HappyPileApplication {
     public static void main(String[] args) {
         SpringApplication.run(HappyPileApplication.class, args);
     }
-
 }

@@ -1,13 +1,11 @@
 package pl.edu.wszib.happypile.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
-@Table(name="couplings")
+@Table(name = "couplings")
 public class Coupling {
 
     @Id
@@ -17,10 +15,26 @@ public class Coupling {
     private String name;
     @Column(name = "diameter")
     private String diameter;
+    @Column(name = "international_unit")
+    private String internationalUnit;
     @Column(name = "weight")
     private Double weight;
     @Column(name = "price")
     private BigDecimal price;
+    @OneToOne(mappedBy = "coupling")
+    private Equipment equipment;
+
+    public Coupling() {
+    }
+
+    public Coupling(String id, String name, String diameter, String internationalUnit, Double weight, BigDecimal price) {
+        this.id = id;
+        this.name = name;
+        this.diameter = diameter;
+        this.internationalUnit = internationalUnit;
+        this.weight = weight;
+        this.price = price;
+    }
 
     public String getId() {
         return id;
@@ -46,6 +60,14 @@ public class Coupling {
         this.diameter = diameter;
     }
 
+    public String getInternationalUnit() {
+        return internationalUnit;
+    }
+
+    public void setInternationalUnit(String internationalUnit) {
+        this.internationalUnit = internationalUnit;
+    }
+
     public Double getWeight() {
         return weight;
     }
@@ -60,5 +82,13 @@ public class Coupling {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Equipment getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment equipment) {
+        this.equipment = equipment;
     }
 }

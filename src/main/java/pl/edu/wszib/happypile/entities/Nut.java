@@ -1,26 +1,39 @@
 package pl.edu.wszib.happypile.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="nuts")
+@Table(name = "nuts")
 public class Nut {
 
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "type")
+    private String type;
     @Column(name = "diameter")
     private String diameter;
+    @Column(name = "international_unit")
+    private String internationalUnit;
     @Column(name = "weight")
     private Double weight;
     @Column(name = "price")
     private BigDecimal price;
+    @OneToOne(mappedBy = "nut")
+    private Equipment equipment;
+
+    public Nut() {
+    }
+
+    public Nut(String id, String type, String diameter, String internationalUnit, Double weight, BigDecimal price) {
+        this.id = id;
+        this.type = type;
+        this.diameter = diameter;
+        this.internationalUnit = internationalUnit;
+        this.weight = weight;
+        this.price = price;
+    }
 
     public String getId() {
         return id;
@@ -30,12 +43,12 @@ public class Nut {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getDiameter() {
@@ -44,6 +57,14 @@ public class Nut {
 
     public void setDiameter(String diameter) {
         this.diameter = diameter;
+    }
+
+    public String getInternationalUnit() {
+        return internationalUnit;
+    }
+
+    public void setInternationalUnit(String internationalUnit) {
+        this.internationalUnit = internationalUnit;
     }
 
     public Double getWeight() {
@@ -60,5 +81,13 @@ public class Nut {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Equipment getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment equipment) {
+        this.equipment = equipment;
     }
 }

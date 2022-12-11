@@ -1,13 +1,10 @@
 package pl.edu.wszib.happypile.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="bars")
+@Table(name = "bars")
 public class Bar {
 
     @Id
@@ -20,13 +17,32 @@ public class Bar {
     @Column(name = "wall_thickness")
     private String wallThickness;
     @Column(name = "ultimate_load")
-    private Integer ultimateLoad; //siła zrywająca
+    private Integer ultimateLoad;
     @Column(name = "yield_load")
-    private Integer yieldLoad; //siła uplastyczniająca (Fyk)
+    private Double yieldLoad;
+    @Column(name = "international_unit")
+    private String internationalUnit;
     @Column(name = "weight")
     private Double weight;
     @Column(name = "price")
     private BigDecimal price;
+    @OneToOne(mappedBy = "bar")
+    private Equipment equipment;
+
+    public Bar() {
+    }
+
+    public Bar(String id, String name, String diameter, String wallThickness, Integer ultimateLoad, Double yieldLoad, String internationalUnit, Double weight, BigDecimal price) {
+        this.id = id;
+        this.name = name;
+        this.diameter = diameter;
+        this.wallThickness = wallThickness;
+        this.ultimateLoad = ultimateLoad;
+        this.yieldLoad = yieldLoad;
+        this.internationalUnit = internationalUnit;
+        this.weight = weight;
+        this.price = price;
+    }
 
     public String getId() {
         return id;
@@ -60,11 +76,11 @@ public class Bar {
         this.diameter = diameter;
     }
 
-    public Integer getYieldLoad() {
+    public Double getYieldLoad() {
         return yieldLoad;
     }
 
-    public void setYieldLoad(Integer yieldLoad) {
+    public void setYieldLoad(Double yieldLoad) {
         this.yieldLoad = yieldLoad;
     }
 
@@ -74,6 +90,14 @@ public class Bar {
 
     public void setUltimateLoad(Integer ultimateLoad) {
         this.ultimateLoad = ultimateLoad;
+    }
+
+    public String getInternationalUnit() {
+        return internationalUnit;
+    }
+
+    public void setInternationalUnit(String internationalUnit) {
+        this.internationalUnit = internationalUnit;
     }
 
     public Double getWeight() {
@@ -92,4 +116,11 @@ public class Bar {
         this.price = price;
     }
 
+    public Equipment getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment equipment) {
+        this.equipment = equipment;
+    }
 }

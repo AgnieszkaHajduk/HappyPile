@@ -9,5 +9,4 @@ class HappyPileApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }

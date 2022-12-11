@@ -1,13 +1,10 @@
 package pl.edu.wszib.happypile.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name= "plates")
+@Table(name = "plates")
 public class Plate {
 
     @Id
@@ -17,10 +14,26 @@ public class Plate {
     private String name;
     @Column(name = "size")
     private String size;
+    @Column(name = "international_unit")
+    private String internationalUnit;
     @Column(name = "weight")
     private Double weight;
     @Column(name = "price")
     private BigDecimal price;
+    @OneToOne(mappedBy = "plate")
+    private Equipment equipment;
+
+    public Plate() {
+    }
+
+    public Plate(String id, String name, String size, String internationalUnit, Double weight, BigDecimal price) {
+        this.id = id;
+        this.name = name;
+        this.size = size;
+        this.internationalUnit = internationalUnit;
+        this.weight = weight;
+        this.price = price;
+    }
 
     public String getId() {
         return id;
@@ -46,6 +59,14 @@ public class Plate {
         this.size = size;
     }
 
+    public String getInternationalUnit() {
+        return internationalUnit;
+    }
+
+    public void setInternationalUnit(String internationalUnit) {
+        this.internationalUnit = internationalUnit;
+    }
+
     public Double getWeight() {
         return weight;
     }
@@ -60,5 +81,13 @@ public class Plate {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Equipment getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment equipment) {
+        this.equipment = equipment;
     }
 }
