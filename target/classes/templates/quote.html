@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: template (~{:: .uk-section})}">
+<head>
+</head>
+<body>
+
+<div class="uk-section">
+    <div class="uk-container uk-container-small">
+
+        <h1 class="uk-heading-bullet">Wycena</h1>
+
+        <div class="uk-child-width-1-4@s uk-grid uk-text-center">
+            <div>
+                <div class="uk-card uk-card-default uk-card-small uk-card-body">
+                    <p class="uk-card-title">Kontrahent:</p>
+                    <p th:text="${selectEquipment.getClientName()}"></p>
+                </div>
+            </div>
+
+            <div>
+                <div class="uk-card uk-card-default uk-card-small uk-card-body">
+                    <h6 class="uk-card-title">Ilość mikropali:</h6>
+                    <p th:text="${selectEquipment.getPilesQuantity()}"></p>
+                </div>
+            </div>
+
+            <div>
+                <div class="uk-card uk-card-default uk-card-small uk-card-body">
+                    <h6 class="uk-card-title">Głębokość mikropali:</h6>
+                    <p th:text="|${selectEquipment.getDepth()} m|"></p>
+                </div>
+            </div>
+
+            <div>
+                <div class="uk-card uk-card-default uk-card-small uk-card-body">
+                    <h6 class="uk-card-title">Nośność obliczeniowa:</h6>
+                    <p th:text="|${selectEquipment.getCapacity()} kN|"></p>
+                </div>
+            </div>
+        </div>
+
+        <table class="uk-table uk-table-striped uk-text-center">
+
+            <tr class="uk-text-center uk-text-bold">
+                <td>Nr ref</td>
+                <td>Osprzęt</td>
+                <td>Ilość</td>
+                <td>j.m.</td>
+                <td>Cena [€]</td>
+                <td>Suma [€]</td>
+            </tr>
+
+            <tr>
+                <td th:text="${equipment.getBar().getId()}"></td>
+                <td th:text="${equipment.getBar().getName()} + ' ' + ${equipment.getBar().getDiameter()} + ' x ' + ${equipment.getBar().getWallThickness()} + ' ' + |${selectEquipment.getSingleBarLength()} m|"></td>
+                <td th:text="${equipment.getBarsQuantity()}"></td>
+                <td th:text="${equipment.getBar().getInternationalUnit()}"></td>
+                <td th:text="${equipment.getBar().getPrice()}"></td>
+                <td th:text="${equipment.getBarsQuantity()} * ${equipment.getBar().getPrice()}"></td>
+            </tr>
+
+            <tr>
+                <td th:text="${equipment.getCoupling().getId()}"></td>
+                <td th:text="${equipment.getCoupling().getName()} + ' ' + ${equipment.getCoupling().getDiameter()}"></td>
+                <td th:text="${equipment.getCouplingsQuantity()}"></td>
+                <td th:text="${equipment.getCoupling().getInternationalUnit()}"></td>
+                <td th:text="${equipment.getCoupling().getPrice()}"></td>
+                <td th:text="${equipment.getCouplingsQuantity()} * ${equipment.getCoupling().getPrice()}"></td>
+            </tr>
+
+            <tr>
+                <td th:text="${equipment.getNut().getId()}"></td>
+                <td th:text="${equipment.getNut().getType()} + ' ' + ${equipment.getNut().getDiameter()}"></td>
+                <td th:text="${selectEquipment.getNutsQuantity()}"></td>
+                <td th:text="${equipment.getNut().getInternationalUnit()}"></td>
+                <td th:text="${equipment.getNut().getPrice()}"></td>
+                <td th:text="${selectEquipment.getNutsQuantity()} * ${equipment.getNut().getPrice()}"></td>
+            </tr>
+
+            <tr>
+                <td th:text="${equipment.getPlate().getId()}"></td>
+                <td th:text="${equipment.getPlate().getName()} + ' ' + ${equipment.getPlate().getSize()}"></td>
+                <td th:text="${selectEquipment.getPlatesQuantity()}"></td>
+                <td th:text="${equipment.getPlate().getInternationalUnit()}"></td>
+                <td th:text="${equipment.getPlate().getPrice()}"></td>
+                <td th:text="${selectEquipment.getPlatesQuantity()} * ${equipment.getPlate().getPrice()}"></td>
+            </tr>
+
+            <tr class="uk-text-bold">
+                <td>Łącznie [€]:</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td th:text="${equipment.getBarsQuantity()} * ${equipment.getBar().getPrice()} +
+                            ${equipment.getCouplingsQuantity()} * ${equipment.getCoupling().getPrice()} +
+                            ${selectEquipment.getNutsQuantity()} * ${equipment.getNut().getPrice()} +
+                            ${selectEquipment.getPlatesQuantity()} * ${equipment.getPlate().getPrice()}"></td>
+            </tr>
+
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

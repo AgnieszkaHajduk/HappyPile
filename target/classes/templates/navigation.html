@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<nav th:fragment="nav" class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+            <a th:href="@{/home}" class="uk-logo uk-navbar-item"><i uk-icon="icon: happy"></i>Happy Pile!</a>
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/select-equipment}">Kalkulator</a></li>
+        </ul>
+    </div>
+</nav>
+
+</body>
+</html>

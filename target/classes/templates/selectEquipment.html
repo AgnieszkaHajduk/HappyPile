@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: template (~{:: .uk-section})}">
+<head>
+</head>
+<body>
+
+<div class="uk-section">
+    <div class="uk-container uk-container-small">
+        <h1 class="uk-heading-bullet">Kalkulator</h1>
+
+        <form class="uk-form-horizontal uk-margin-large" action="#" th:action="@{select-equipment}"
+              th:object="${selectEquipment}" method="post">
+
+            <div class="uk-margin">
+                <label class="uk-form-label">Kontrahent:</label>
+                <div class="uk-form-controls">
+                    <input class="uk-input uk-form-width-large valid" type="text" th:field="*{clientName}"
+                           placeholder="Wpisz nazwę kontrahenta (minimum 3 znaki)" minlength="3" required>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label">Ilość mikropali:</label>
+                <div class="uk-form-controls">
+                    <input class="uk-input uk-form-width-large" type="number" th:field="*{pilesQuantity}"
+                           placeholder="Wpisz liczbę całkowitą większą niż 1" min="1" step="1" required>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label">Głębokość mikropali:</label>
+                <div class="uk-form-controls">
+                    <input class="uk-input uk-form-width-large" type="number" th:field="*{depth}"
+                           placeholder="Wpisz liczbę metrów (1-30)" min="1" max="30" step="0.5" required>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label">Wymagana nośność obliczeniowa [kN]:</label>
+                <div class="uk-form-controls">
+                    <input class="uk-input uk-form-width-large" type="number" th:field="*{capacity}"
+                           placeholder="Wpisz liczbę większą niż 1" min="1" step="0.5" required>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label">Długość pojedynczej żerdzi:</label>
+                <div class="uk-form-controls">
+                    <select class="uk-select uk-form-width-large" th:field="*{singleBarLength}"
+                            th:errorclass="uk-form-danger">
+                        <option th:each="singleBarLength : ${barLengths}"
+                                th:value="${singleBarLength}"
+                                th:text="|${singleBarLength} m|"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label">Ilość wymaganych nakrętek:</label>
+                <div class="uk-form-controls">
+                    <select class="uk-select uk-form-width-large" th:field="*{nutsQuantity}"
+                            th:errorclass="uk-form-danger">
+                        <option th:each="nutsQuantity : ${nutsQuantity}"
+                                th:value="${nutsQuantity}"
+                                th:text="${nutsQuantity} "></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label">Typ nakrętki:</label>
+                <div class="uk-form-controls">
+                    <select class="uk-select uk-form-width-large" th:field="*{nutType}">
+                        <option th:each="nutType : ${nutType}"
+                                th:value="${nutType}"
+                                th:text="${nutType} "></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label">Ilość wymaganych płyt oporowych:</label>
+                <div class="uk-form-controls">
+                    <select class="uk-select uk-form-width-large" th:field="*{platesQuantity}">
+                        <option th:each="platesQuantity : ${platesQuantity}"
+                                th:value="${platesQuantity}"
+                                th:text="${platesQuantity} "></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label">Rozmiar płyty oporowej:</label>
+                <div class="uk-form-controls">
+                    <select class="uk-select uk-form-width-large" th:field="*{plateSize}"
+                            th:errorclass="uk-form-danger">
+                        <option th:each="plateSize : ${plateSize}"
+                                th:value="${plateSize}"
+                                th:text="${plateSize} "></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="uk-width-1-1">
+                <input type="submit" class="uk-button uk-button-secondary uk-width-1-1" value="Oblicz">
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
