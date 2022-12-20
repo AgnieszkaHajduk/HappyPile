@@ -63,6 +63,7 @@ public class SelectEquipmentController {
         selectEquipmentService.saveSelectEquipment(selectEquipment);
         attributes.addFlashAttribute("selectEquipment", selectEquipment);
 
+
         model.addAttribute("equipment", new Equipment());
         Bar bar = barService.chooseBar(selectEquipment);
         equipment.setBar(bar);
