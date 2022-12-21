@@ -17,6 +17,10 @@ public class SelectEquipmentMapper {
         entity.setNutType(model.getNutType());
         entity.setPlatesQuantity(model.getPlatesQuantity());
         entity.setPlateSize(model.getPlateSize());
+        entity.setBar(model.getBar());
+        entity.setCoupling(model.getCoupling());
+        entity.setNut(model.getNut());
+        entity.setPlate(model.getPlate());
 
         return entity;
     }
