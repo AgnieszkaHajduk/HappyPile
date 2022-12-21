@@ -28,17 +28,17 @@ public class SelectEquipment {
     private Integer platesQuantity;
     @Column(name = "plate_size")
     private String plateSize;
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Bar bar;
     @Transient
     private int barsQuantity;
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Coupling coupling;
     @Transient
     private int couplingsQuantity;
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Nut nut;
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Plate plate;
 
     public SelectEquipment() {
