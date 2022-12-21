@@ -34,8 +34,7 @@ public class BarService {
     }
 
     public int countQuantityOfBars(@RequestBody SelectEquipmentModel selectEquipment) {
-        double barsQuantity = selectEquipment.getPilesQuantity() * selectEquipment.getDepth() / selectEquipment.getSingleBarLength();
-        java.lang.Math.ceil(barsQuantity);
+        double barsQuantity = selectEquipment.getPilesQuantity() * java.lang.Math.ceil(selectEquipment.getDepth() / selectEquipment.getSingleBarLength());
         return (int) barsQuantity;
     }
 }

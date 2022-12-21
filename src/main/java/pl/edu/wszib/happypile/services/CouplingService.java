@@ -23,6 +23,6 @@ public class CouplingService {
     }
 
     public int countQuantityOfCouplings(@RequestParam int barsQuantity, @RequestParam int pilesQuantity){
-        return (barsQuantity / pilesQuantity - 1);
+        return ((barsQuantity / pilesQuantity - 1) * pilesQuantity);
     }
 }
