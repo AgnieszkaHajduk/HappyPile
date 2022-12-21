@@ -60,7 +60,7 @@ public class SelectEquipmentController {
         selectEquipment.setBarsQuantity(barsQuantity);
         Coupling coupling = couplingService.chooseCoupling(bar);
         selectEquipment.setCoupling(coupling);
-        int couplingsQuantity = couplingService.countQuantityOfCouplings(barsQuantity);
+        int couplingsQuantity = couplingService.countQuantityOfCouplings(barsQuantity, selectEquipment.getPilesQuantity());
         selectEquipment.setCouplingsQuantity(couplingsQuantity);
         Nut nut = nutService.chooseNut(selectEquipment, bar);
         selectEquipment.setNut(nut);

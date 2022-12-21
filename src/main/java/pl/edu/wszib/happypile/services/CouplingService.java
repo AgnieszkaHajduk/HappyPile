@@ -22,7 +22,7 @@ public class CouplingService {
         return chosenCoupling;
     }
 
-    public int countQuantityOfCouplings(@RequestParam int barsQuantity){
-        return barsQuantity - 1;
+    public int countQuantityOfCouplings(@RequestParam int barsQuantity, @RequestParam int pilesQuantity){
+        return (barsQuantity / pilesQuantity - 1);
     }
 }
