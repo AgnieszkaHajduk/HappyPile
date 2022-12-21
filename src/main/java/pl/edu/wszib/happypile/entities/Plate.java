@@ -21,7 +21,7 @@ public class Plate {
     @Column(name = "price")
     private BigDecimal price;
     @OneToOne(mappedBy = "plate")
-    private Equipment equipment;
+    private SelectEquipment selectEquipment;
 
     public Plate() {
     }
@@ -83,11 +83,11 @@ public class Plate {
         this.price = price;
     }
 
-    public Equipment getEquipment() {
-        return equipment;
+    public SelectEquipment getSelectEquipment() {
+        return selectEquipment;
     }
 
-    public void setEquipment(Equipment equipment) {
-        this.equipment = equipment;
+    public void setSelectEquipment(SelectEquipment selectEquipment) {
+        this.selectEquipment = selectEquipment;
     }
 }

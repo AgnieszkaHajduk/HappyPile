@@ -51,39 +51,39 @@
             </tr>
 
             <tr>
-                <td th:text="${equipment.getBar().getId()}"></td>
-                <td th:text="${equipment.getBar().getName()} + ' ' + ${equipment.getBar().getDiameter()} + ' x ' + ${equipment.getBar().getWallThickness()} + ' ' + |${selectEquipment.getSingleBarLength()} m|"></td>
-                <td th:text="${equipment.getBarsQuantity()}"></td>
-                <td th:text="${equipment.getBar().getInternationalUnit()}"></td>
-                <td th:text="${equipment.getBar().getPrice()}"></td>
-                <td th:text="${equipment.getBarsQuantity()} * ${equipment.getBar().getPrice()}"></td>
+                <td th:text="${selectEquipment.getBar().getId()}"></td>
+                <td th:text="${selectEquipment.getBar().getName()} + ' ' + ${selectEquipment.getBar().getDiameter()} + ' x ' + ${selectEquipment.getBar().getWallThickness()} + ' ' + |${selectEquipment.getSingleBarLength()} m|"></td>
+                <td th:text="${selectEquipment.getBarsQuantity()}"></td>
+                <td th:text="${selectEquipment.getBar().getInternationalUnit()}"></td>
+                <td th:text="${selectEquipment.getBar().getPrice()}"></td>
+                <td th:text="${selectEquipment.getBarsQuantity()} * ${selectEquipment.getBar().getPrice()}"></td>
             </tr>
 
             <tr>
-                <td th:text="${equipment.getCoupling().getId()}"></td>
-                <td th:text="${equipment.getCoupling().getName()} + ' ' + ${equipment.getCoupling().getDiameter()}"></td>
-                <td th:text="${equipment.getCouplingsQuantity()}"></td>
-                <td th:text="${equipment.getCoupling().getInternationalUnit()}"></td>
-                <td th:text="${equipment.getCoupling().getPrice()}"></td>
-                <td th:text="${equipment.getCouplingsQuantity()} * ${equipment.getCoupling().getPrice()}"></td>
+                <td th:text="${selectEquipment.getCoupling().getId()}"></td>
+                <td th:text="${selectEquipment.getCoupling().getName()} + ' ' + ${selectEquipment.getCoupling().getDiameter()}"></td>
+                <td th:text="${selectEquipment.getCouplingsQuantity()}"></td>
+                <td th:text="${selectEquipment.getCoupling().getInternationalUnit()}"></td>
+                <td th:text="${selectEquipment.getCoupling().getPrice()}"></td>
+                <td th:text="${selectEquipment.getCouplingsQuantity()} * ${selectEquipment.getCoupling().getPrice()}"></td>
             </tr>
 
             <tr>
-                <td th:text="${equipment.getNut().getId()}"></td>
-                <td th:text="${equipment.getNut().getType()} + ' ' + ${equipment.getNut().getDiameter()}"></td>
+                <td th:text="${selectEquipment.getNut().getId()}"></td>
+                <td th:text="${selectEquipment.getNut().getType()} + ' ' + ${selectEquipment.getNut().getDiameter()}"></td>
                 <td th:text="${selectEquipment.getNutsQuantity()}"></td>
-                <td th:text="${equipment.getNut().getInternationalUnit()}"></td>
-                <td th:text="${equipment.getNut().getPrice()}"></td>
-                <td th:text="${selectEquipment.getNutsQuantity()} * ${equipment.getNut().getPrice()}"></td>
+                <td th:text="${selectEquipment.getNut().getInternationalUnit()}"></td>
+                <td th:text="${selectEquipment.getNut().getPrice()}"></td>
+                <td th:text="${selectEquipment.getNutsQuantity()} * ${selectEquipment.getNut().getPrice()}"></td>
             </tr>
 
             <tr>
-                <td th:text="${equipment.getPlate().getId()}"></td>
-                <td th:text="${equipment.getPlate().getName()} + ' ' + ${equipment.getPlate().getSize()}"></td>
+                <td th:text="${selectEquipment.getPlate().getId()}"></td>
+                <td th:text="${selectEquipment.getPlate().getName()} + ' ' + ${selectEquipment.getPlate().getSize()}"></td>
                 <td th:text="${selectEquipment.getPlatesQuantity()}"></td>
-                <td th:text="${equipment.getPlate().getInternationalUnit()}"></td>
-                <td th:text="${equipment.getPlate().getPrice()}"></td>
-                <td th:text="${selectEquipment.getPlatesQuantity()} * ${equipment.getPlate().getPrice()}"></td>
+                <td th:text="${selectEquipment.getPlate().getInternationalUnit()}"></td>
+                <td th:text="${selectEquipment.getPlate().getPrice()}"></td>
+                <td th:text="${selectEquipment.getPlatesQuantity()} * ${selectEquipment.getPlate().getPrice()}"></td>
             </tr>
 
             <tr class="uk-text-bold">
@@ -92,10 +92,10 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td th:text="${equipment.getBarsQuantity()} * ${equipment.getBar().getPrice()} +
-                            ${equipment.getCouplingsQuantity()} * ${equipment.getCoupling().getPrice()} +
-                            ${selectEquipment.getNutsQuantity()} * ${equipment.getNut().getPrice()} +
-                            ${selectEquipment.getPlatesQuantity()} * ${equipment.getPlate().getPrice()}"></td>
+                <td th:text="${selectEquipment.getBarsQuantity()} * ${selectEquipment.getBar().getPrice()} +
+                            ${selectEquipment.getCouplingsQuantity()} * ${selectEquipment.getCoupling().getPrice()} +
+                            ${selectEquipment.getNutsQuantity()} * ${selectEquipment.getNut().getPrice()} +
+                            ${selectEquipment.getPlatesQuantity()} * ${selectEquipment.getPlate().getPrice()}"></td>
             </tr>
 
         </table>

@@ -2,7 +2,6 @@ package pl.edu.wszib.happypile.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table(name = "couplings")
@@ -22,7 +21,7 @@ public class Coupling {
     @Column(name = "price")
     private BigDecimal price;
     @OneToOne(mappedBy = "coupling")
-    private Equipment equipment;
+    private SelectEquipment selectEquipment;
 
     public Coupling() {
     }
@@ -84,11 +83,11 @@ public class Coupling {
         this.price = price;
     }
 
-    public Equipment getEquipment() {
-        return equipment;
+    public SelectEquipment getSelectEquipment() {
+        return selectEquipment;
     }
 
-    public void setEquipment(Equipment equipment) {
-        this.equipment = equipment;
+    public void setSelectEquipment(SelectEquipment selectEquipment) {
+        this.selectEquipment = selectEquipment;
     }
 }

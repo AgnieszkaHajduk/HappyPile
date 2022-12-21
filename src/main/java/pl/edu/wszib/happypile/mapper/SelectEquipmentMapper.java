@@ -5,7 +5,9 @@ import pl.edu.wszib.happypile.models.SelectEquipmentModel;
 
 public class SelectEquipmentMapper {
     public static SelectEquipment toEntity(SelectEquipmentModel model) {
+
         SelectEquipment entity = new SelectEquipment();
+
         entity.setClientName(model.getClientName());
         entity.setPilesQuantity(model.getPilesQuantity());
         entity.setDepth(model.getDepth());
@@ -15,6 +17,7 @@ public class SelectEquipmentMapper {
         entity.setNutType(model.getNutType());
         entity.setPlatesQuantity(model.getPlatesQuantity());
         entity.setPlateSize(model.getPlateSize());
+
         return entity;
     }
 }

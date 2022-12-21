@@ -21,7 +21,7 @@ public class Nut {
     @Column(name = "price")
     private BigDecimal price;
     @OneToOne(mappedBy = "nut")
-    private Equipment equipment;
+    private SelectEquipment selectEquipment;
 
     public Nut() {
     }
@@ -83,11 +83,11 @@ public class Nut {
         this.price = price;
     }
 
-    public Equipment getEquipment() {
-        return equipment;
+    public SelectEquipment getSelectEquipment() {
+        return selectEquipment;
     }
 
-    public void setEquipment(Equipment equipment) {
-        this.equipment = equipment;
+    public void setSelectEquipment(SelectEquipment selectEquipment) {
+        this.selectEquipment = selectEquipment;
     }
 }

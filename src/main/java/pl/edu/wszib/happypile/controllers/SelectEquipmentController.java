@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.edu.wszib.happypile.dao.PlateDao;
 import pl.edu.wszib.happypile.entities.*;
-import pl.edu.wszib.happypile.models.EquipmentModel;
 import pl.edu.wszib.happypile.models.SelectEquipmentModel;
 import pl.edu.wszib.happypile.services.*;
 
@@ -19,15 +18,13 @@ public class SelectEquipmentController {
     private final SelectEquipmentService selectEquipmentService;
     private final BarService barService;
     private final CouplingService couplingService;
-    private final EquipmentService equipmentService;
     private final NutService nutService;
     private final PlateDao plateDao;
 
-    public SelectEquipmentController(SelectEquipmentService selectEquipmentService, BarService barService, CouplingService couplingService, EquipmentService equipmentService, NutService nutService, PlateDao plateDao) {
+    public SelectEquipmentController(SelectEquipmentService selectEquipmentService, BarService barService, CouplingService couplingService, NutService nutService, PlateDao plateDao) {
         this.selectEquipmentService = selectEquipmentService;
         this.barService = barService;
         this.couplingService = couplingService;
-        this.equipmentService = equipmentService;
         this.nutService = nutService;
         this.plateDao = plateDao;
     }
@@ -49,37 +46,29 @@ public class SelectEquipmentController {
     }
 
     @PostMapping("select-equipment")
-    public String createEquipment(@ModelAttribute("selectEquipment") @Valid SelectEquipmentModel selectEquipment,
+    public String createSelectEquipment(@ModelAttribute("selectEquipment") @Valid SelectEquipmentModel selectEquipment,
                                   BindingResult bindingResult,
-                                  @ModelAttribute("equipment") EquipmentModel equipment,
-                                  RedirectAttributes attributes,
-                                  Model model) {
+                                  RedirectAttributes attributes) {
 
         if (bindingResult.hasErrors()) {
 
             return "selectEquipment";
         }
+        Bar bar = barService.chooseBar(selectEquipment);
+        selectEquipment.setBar(bar);
+        int barsQuantity = barService.countQuantityOfBars(selectEquipment);
+        selectEquipment.setBarsQuantity(barsQuantity);
+        Coupling coupling = couplingService.chooseCoupling(bar);
+        selectEquipment.setCoupling(coupling);
+        int couplingsQuantity = couplingService.countQuantityOfCouplings(barsQuantity);
+        selectEquipment.setCouplingsQuantity(couplingsQuantity);
+        Nut nut = nutService.chooseNut(selectEquipment, bar);
+        selectEquipment.setNut(nut);
+        Plate plate = plateDao.findPlateBySize(selectEquipment.getPlateSize());
+        selectEquipment.setPlate(plate);
 
         selectEquipmentService.saveSelectEquipment(selectEquipment);
         attributes.addFlashAttribute("selectEquipment", selectEquipment);
-
-
-        model.addAttribute("equipment", new Equipment());
-        Bar bar = barService.chooseBar(selectEquipment);
-        equipment.setBar(bar);
-        int barsQuantity = barService.countQuantityOfBars(selectEquipment);
-        equipment.setBarsQuantity(barsQuantity);
-        Coupling coupling = couplingService.chooseCoupling(bar);
-        equipment.setCoupling(coupling);
-        int couplingsQuantity = couplingService.countQuantityOfCouplings(barsQuantity);
-        equipment.setCouplingsQuantity(couplingsQuantity);
-        Nut nut = nutService.chooseNut(selectEquipment, bar);
-        equipment.setNut(nut);
-        Plate plate = plateDao.findPlateBySize(selectEquipment.getPlateSize());
-        equipment.setPlate(plate);
-
-        equipmentService.saveEquipment(equipment);
-        attributes.addFlashAttribute("equipment", equipment);
 
         return "redirect:/quote";
     }
